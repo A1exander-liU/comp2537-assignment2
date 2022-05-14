@@ -1,0 +1,646 @@
+<html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(to bottom, rgb(212, 6, 6), rgb(228, 228, 228), rgb(55, 55, 55));
+        }
+
+        .normal {
+            background-color: #aa9;
+        }
+
+        .fire {
+            background-color: #f42;
+        }
+
+        .water {
+            background-color: #39f;
+        }
+
+        .electric {
+            background-color: #fc3;
+        }
+
+        .grass {
+            background-color: #7c5;
+        }
+
+        .ice {
+            background-color: #6cf;
+        }
+
+        .fighting {
+            background-color: #b54;
+        }
+
+        .poison {
+            background-color: #a59;
+        }
+
+        .ground {
+            background-color: #db5;
+        }
+
+        .flying {
+            background-color: #89f;
+        }
+
+        .psychic {
+            background-color: #f59;
+        }
+
+        .bug {
+            background-color: #ab2;
+        }
+
+        .rock {
+            background-color: #ba6;
+        }
+
+        .ghost {
+            background-color: #66b;
+        }
+
+        .dragon {
+            background-color: #76e;
+        }
+
+        .dark {
+            background-color: #754;
+        }
+
+        .steel {
+            background-color: #aab;
+        }
+
+        .fairy {
+            background-color: #e9e;
+        }
+
+        footer {
+            display: grid;
+            grid-template-columns: auto;
+            background-color: rgb(194, 194, 194);
+            justify-content: center;
+            width: 100%;
+        }
+
+        footer p {
+            background-color: rgb(167, 163, 163);
+            border-radius: 10px;
+            width: 100%;
+            margin: 10px 0;
+            padding: 5px 15px;
+        }
+
+        footer a {
+            color: rgb(213, 213, 213);
+        }
+
+        span {
+            border-radius: 5px;
+            padding: 2px 4px;
+            margin: 0 1px;
+            color: white;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            background-image: url("pokeball.png");
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        header h2 {
+            font-size: 34px;
+            color: rgb(255, 233, 31);
+            padding: 20px;
+            background-color: rgb(211, 211, 211);
+            border-radius: 20px;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: blue;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        button {
+            border-radius: 0px;
+            border-width: 0px;
+            padding: 10px 0;
+        }
+
+        button:hover {
+            background-color: rgb(172, 172, 172);
+        }
+
+        #desc,
+        #abilities-tab {
+            border-radius: 0px;
+            border-width: 0px;
+            padding: 10px 0;
+        }
+
+        .pokemons h5,
+        p {
+            text-align: center;
+        }
+
+        h4 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pokemons {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: auto auto auto;
+            gap: 20px;
+            justify-content: space-around;
+            margin-top: 1%;
+        }
+
+        .pokemon {
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .pokemon:hover {
+            background-color: lightgray;
+        }
+
+        .pokemon_full {
+            text-align: center;
+            display: grid;
+            grid-template-columns: 40% 300px;
+            grid-template-rows: auto;
+            column-gap: 20px;
+            padding: 100px;
+            border-radius: 20px;
+        }
+
+        .pokemon_full>div:first-child {
+            /* background-color: rgb(199, 197, 197); */
+            border-radius: 5px;
+        }
+
+        .tabs {
+            /* background-color: rgb(199, 197, 197); */
+            padding: 20px 10px;
+            border-radius: 5px;
+        }
+
+        .tabs button.active {
+            background-color: rgb(165, 164, 164);
+        }
+
+        .tab-container {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+        }
+
+        .tablinks {
+            margin-bottom: 5px;
+        }
+
+        #base-stats {
+            width: 100%;
+        }
+
+        .search {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        #weight_search {
+            text-align: left;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .page-tabs {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            margin-bottom: 5%;
+        }
+
+        .page-tab {
+            width: 100%;
+            background-color: rgb(224, 224, 224);
+        }
+
+        .page-tabs button.active {
+            background-color: rgb(165, 164, 164);
+        }
+
+        #page_buttons {
+            margin: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #page_buttons button {
+            width: 5%;
+            border-radius: 10px;
+        }
+
+        #page_buttons .page_number_button.active {
+            background-color: rgb(165, 164, 164);
+        }
+
+        #base-stats {
+            text-align: right;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto auto auto auto auto auto;
+            column-gap: 5px;
+        }
+
+        /* .tabcontent {
+            height: 25vh;
+            overflow: auto;
+        } */
+
+        #description {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto;
+            column-gap: 5px;
+        }
+
+        #abilities {
+            display: block;
+            margin-top: 5px;
+        }
+
+        #abilities button {
+            display: block;
+            width: 99%;
+        }
+
+        .ability {
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .all-info {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+        }
+
+        #displayed-history {
+            height: 30vh;
+            overflow: auto;
+        }
+
+        #displayed-history div button {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .types {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto auto;
+            background-color: rgb(214, 214, 214);
+            padding: 20px;
+            border-radius: 20px;
+            border-width: 1px;
+            border-style: solid;
+            margin-bottom: 1%;
+            width: 95%;
+            margin: auto;
+        }
+
+        #search-criteria {
+            display: grid;
+            row-gap: 5px;
+        }
+
+        #search-criteria>div {
+            display: grid;
+            grid-template-columns: 75% 25%;
+            row-gap: 10px;
+            align-items: center;
+        }
+
+        #search-criteria>div button {
+            width: 100%;
+        }
+
+        #history-container {
+            display: grid;
+            grid-template-columns: 90%;
+            grid-template-rows: auto auto auto;
+            row-gap: 5px;
+            background-color: rgb(214, 214, 214);
+            border-radius: 20px;
+            border-width: 1px;
+            border-style: solid;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 1%;
+            width: 95%;
+            margin: auto;
+        }
+
+        #history-container h3 {
+            margin-top: 5px;
+        }
+
+        #history-container button {
+            width: 100%;
+        }
+
+        #displayed-history {
+            margin: 2% 0;
+        }
+
+        .history-item {
+            display: grid;
+            grid-template-columns: 75% 25%;
+        }
+
+        #timeline-container {
+            width: 95%;
+            margin: auto;
+            background-color: rgb(214, 214, 214);
+            border-radius: 20px;
+            border-width: 1px;
+            border-style: solid;
+            display: grid;
+            grid-template-columns: 90%;
+            grid-template-rows: auto auto auto;
+            justify-content: center;
+            row-gap: 5px;
+        }
+
+        #timeline-container h3 {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #displayed-timeline {
+            height: 30vh;
+            overflow: auto;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: auto;
+            row-gap: 5px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 85% 15%;
+            width: 95%;
+            margin: auto;
+        }
+
+        .timeline-item div {
+            background-color: rgb(239, 239, 239);
+            border-radius: 10px;
+            padding: 5px;
+            border-radius: 10px 0 0 10px;
+        }
+
+        .timeline-item button {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .timeline-item p {
+            text-align: left;
+        }
+
+        @media screen and (max-width: 800px) {
+            .pokemons {
+                grid-template-columns: auto auto !important;
+            }
+        }
+
+        @media screen and (max-width: 550px) {
+            .pokemons {
+                display: flex;
+                flex-direction: column;
+                width: 99%;
+                align-items: center;
+            }
+
+            .pokemon_full {
+                grid-template-columns: 100%;
+                grid-template-rows: auto auto;
+                width: 99%;
+                padding: 0;
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            .pokemons {
+                grid-template-columns: auto !important;
+            }
+
+            #search-criteria>div {
+                grid-template-columns: 100%;
+            }
+
+            .history-item {
+                grid-template-columns: auto;
+            }
+        }
+    </style>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="code.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <h2>Poké Searcher</h2>
+        </a>
+    </header>
+    <div class="page-tabs">
+        <button class="page-tab active" id="home">Home</button>
+        <button class="page-tab" id="search">Search</button>
+        <button class="page-tab" id="history">History</button>
+        <button class="page-tab" id="timeline">Timeline</button>
+    </div>
+    <div class="tab-stuff" id="home-page">
+        <div class="display_pokemons">
+            <div class="pokemons">
+            </div>
+            <div id="page_buttons">
+            </div>
+        </div>
+    </div>
+    <div class="tab-stuff" id="search-page">
+        <div class="types">
+            <div id="search-criteria">
+                <div>
+                    <div>
+                        <label for="name">Name:</label><br>
+                        <input type="text" id="name">
+                    </div>
+                    <div>
+                        <button id="find_by_name">Search</button>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="type_dropdown">Search by Type</label><br>
+                        <select id="type_dropdown">
+                            <option value="normal" class="type_selected">Normal</option>
+                            <option value="fire" class="type_selected">Fire</option>
+                            <option value="water" class="type_selected">Water</option>
+                            <option value="electric" class="type_selected">Electric</option>
+                            <option value="grass" class="type_selected">Grass</option>
+                            <option value="ice" class="type_selected">Ice</option>
+                            <option value="fighting" class="type_selected">Fighting</option>
+                            <option value="poison" class="type_selected">Poison</option>
+                            <option value="ground" class="type_selected">Ground</option>
+                            <option value="flying" class="type_selected">Flying</option>
+                            <option value="psychic" class="type_selected">Psychic</option>
+                            <option value="bug" class="type_selected">Bug</option>
+                            <option value="rock" class="type_selected">Rock</option>
+                            <option value="ghost" class="type_selected">Ghost</option>
+                            <option value="dragon" class="type_selected">Dragon</option>
+                            <option value="dark" class="type_selected">Dark</option>
+                            <option value="steel" class="type_selected">Steel</option>
+                            <option value="fairy" class="type_selected">Fairy</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button id="find_by_type">Search</button>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="weight_search">Search by Weight(kg)</label>
+                        <br>
+                        <div id="weight_search">
+                            <label for="min-weight">Min Weight: </label><br>
+                            <input type="number" id="min-weight"><br>
+                            <label for="max-weight">Max Weight: </label><br>
+                            <input type="number" id="max-weight">
+                        </div>
+                    </div>
+                    <div>
+                        <button id="find_by_weight">Search</button>
+                    </div>
+                </div>
+                <div>
+                    <div id="rarity_search">
+                        <label>Search by Base Stats</label><br>
+                        <input type="radio" id="high_stats" value="high" name="base_stats">
+                        <label for="high">High</label><br>
+                        <input type="radio" id="moderate_stats" value="moderate" name="base_stats">
+                        <label for="moderate">Moderate</label><br>
+                        <input type="radio" id="low_stats" value="low" name="base_stats">
+                        <label for="low">Low</label><br>
+                    </div>
+                    <div>
+                        <button id="find_by_stats">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pokemons">
+        </div>
+        <div id="page_buttons">
+        </div>
+    </div>
+    <div class="tab-stuff" id="history-page">
+        <div id="history-container">
+            <h3>History</h3>
+            <button id="clear-history">Clear All</button>
+            <div id="displayed-history">
+            </div>
+        </div>
+        <div class="pokemons">
+        </div>
+        <div id="page_buttons">
+        </div>
+    </div>
+    <div class="tab-stuff" id="timeline-page">
+        <div id="timeline-container">
+            <h3>Timeline</h3>
+            <button id="clear-timeline">Clear Timeline</button>
+            <div id="displayed-timeline">
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Data pulled from <a href="https://pokeapi.co/">PokeAPI</a></p>
+        <p><a href="../index.html">My Homepage</a></p>
+        <p>Used the <a href="https://www.w3schools.com/howto/howto_js_tabs.asp">horizontal tabs</a> from the W3Schools
+            How-To's</p>
+    </footer>
+</body>
+
+</html>
+<!-- const url = "pokemonapi url and a id variable for requested pokemon" -->
+<!-- https.get(url, function(data){ the JSON is to big to be read all at once
+    data = ""
+    https_res.on("data", function(chunck) { with this it will keep adding the chunks of the data till the fill json is assembled
+        data += chunk
+    })
+    https_res.on('end', function() {
+        data = JSON.parse(data)
+
+        hp_ = data.stats.filter((obj => {  the stats array may not always be in the same order everytime
+            return obj.stat.name == "hp" // use a filter on the array to filter the element in the array that has name "hp" to access the stat value later 
+        })).map((obj_2) => { can use a call back function to map the filtered array and only return back the base stat of the element (which in this case was a JSON)
+            return obj_2.base_stat now only the base stat of hp is sent and not the whole entire JSON of that array index, we only need the stat value not the whole JSON
+        }) 
+    })
+    res.render("profile.ejs") {
+        "id": req.params.id,
+        "name": data.name,
+        "img": datas.sprites.other["official-artwork"]["front_default"],
+        "hp": hp_[0] remember an array is sent back since we sent an array into the filter function
+    }
+
+    can add progess bar to display the stat value, so they know the scale of how good the satat is (google progres bar html)
+    tip: loop through ajax requests for each pokemon, in success function call another function to ajax again to get the pokemon info and add the item to the html
+    rather than getting all the pokemons all at once and displaying them with a loop
+    meaning display each pokemon one by one instead of getting all the pokemons and display them together, this way there prob wont async errors
+    also use sprites.other.official-artwork instead of sprites.front_default: the image sizes and style are consistent
+
+    //use async and await if you plan to exectue code in the function after ajax requests since ajax is an aysnchronous function, this applies to all async functions
+    async function display() {
+        for (i=0; i<5; i++) {
+            await $.ajax({
+                url: ""
+                type: ""
+                success: ""
+            })
+        }
+        //with this, the function will ensure to wait for each ajax request to fininsh before proceeding with the rest of the code
+        some_stuff() will wait for all the ajax request to be finished before it is called
+        some_stuff()
+    }
+}) -->
